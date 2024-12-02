@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Main.css";
 import AITA from "../assets/AITA.png";
 import ModelInput from "./ModelInput";
+import Spinner from "./Spinner";
 
 const Main = () => {
   const [label, setLabel] = useState("");
@@ -10,17 +11,40 @@ const Main = () => {
   const [temperature, setTemperature] = useState(0.7);
   const [topK, setTopK] = useState(100);
   const [topP, setTopP] = useState(0.9);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const results = {
-      label: label,
       topic: topic,
+      judgment: label,
       temperature: temperature,
       topK: topK,
       topP: topP,
     };
-    console.log(JSON.stringify(results));
+
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(results),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setPost(data.post);
+    } catch (error) {
+      console.error("Error generating post:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -106,20 +130,26 @@ const Main = () => {
                   paddingBottom: "1em",
                 }}
               >
-                <button type="submit" className="submit-button">
-                  Submit
-                </button>
+                {!loading && (
+                  <button type="submit" className="submit-button">
+                    Submit
+                  </button>
+                )}
               </div>
             </form>
             <div>
-              <label>
+              {loading ? (
+                <Spinner />
+              ) : post !== "" ? (
                 <textarea
                   placeholder="Prompt Will Be Here..."
                   value={post}
                   onChange={(e) => setPost(e.target.value)}
                   className="prompt-input"
                 />
-              </label>
+              ) : (
+                <p></p>
+              )}
             </div>
           </div>
           <div className="content-description">
