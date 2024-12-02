@@ -1,0 +1,22 @@
+.model-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  padding-left: 1em;
+  padding-right: 2em;
+}
+
+.model-input input {
+  padding-left: 1em;
+  margin-left: 0.5em;
+  color: #ffffff;
+}
+
+.model-input .MuiSlider-thumb {
+  color: #ff3d17;
+}
+
+.model-input .MuiSlider-track {
+  color: #ff3d17;
+}

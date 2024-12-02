@@ -1,0 +1,91 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  background-color: #0e1113;
+  color: #fff;
+  padding: 0em 1em 0em;
+  gap: 3em;
+  border-bottom: 2px solid #414445;
+}
+
+.navbar .logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.7rem;
+  font-family: Roboto Slab;
+  font-weight: 700;
+}
+
+.navbar .logo {
+  width: 3.7rem;
+  height: 2.1rem;
+}
+
+.navbar .profile-container {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #2b3236;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .search-container {
+  display: flex;
+  width: 35%;
+  height: 40px;
+  border-radius: 1.25rem;
+  background-color: #2b3236;
+  color: #181c1f;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0em 0.5em 0em;
+}
+
+.navbar .search-container input {
+  width: 100%;
+  background-color: transparent;
+  color: #8ba2ad;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.navbar .search-container:hover {
+  background-color: #333d42;
+}
+
+.sidebar-toggle {
+  display: none;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  height: 2.2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-toggle:hover {
+  background-color: #333d42;
+  cursor: pointer;
+}
+
+/* Show the toggle button on mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar by default */
+  }
+  .sidebar-toggle {
+    display: flex; /* Show toggle button */
+  }
+  .logo-text {
+    display: none;
+  }
+}

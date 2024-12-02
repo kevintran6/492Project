@@ -1,0 +1,11 @@
+.App .content-container {
+  display: flex;
+  height: 100%;
+  color: #fff;
+}
+
+.App {
+  background-color: #0e1113;
+  min-height: 100vh;
+  height: 100%;
+}
