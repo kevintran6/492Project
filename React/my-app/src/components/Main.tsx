@@ -47,6 +47,12 @@ const Main = () => {
     }
   };
 
+  const handleClear = () => {
+    setPost("");
+    setLabel("");
+    setTopic("");
+  };
+
   return (
     <div className="main">
       <div className="header">
@@ -130,6 +136,11 @@ const Main = () => {
                   paddingBottom: "1em",
                 }}
               >
+                {post !== "" && (
+                  <button className="clear-button" onClick={handleClear}>
+                  Clear
+                </button>
+                )}
                 {!loading && (
                   <button type="submit" className="submit-button">
                     Submit

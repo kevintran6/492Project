@@ -95,6 +95,14 @@
   border: none;
 }
 
+.clear-button {
+  border-radius: 1em;
+  padding: 0.4em 1em;
+  font-size: 1em;
+  border: none;
+  margin-right: 1rem;
+}
+
 .selected {
   border: none;
   border-bottom: 3px solid #ff3d17;
