@@ -13,6 +13,31 @@ const Main = () => {
   const [topP, setTopP] = useState(0.9);
   const [loading, setLoading] = useState(false);
 
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [videoInput, setVideoInput] = useState("");
+
+  const handleVideoSubmit = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/text-to-speech", {
+        // Updated endpoint
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: videoInput }), // Send the video input text
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setVideoSrc(data.video_with_subtitles); // Use the correct key from the response
+    } catch (error) {
+      console.error("Error generating video:", error);
+    }
+  };
+
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const results = {
@@ -138,8 +163,8 @@ const Main = () => {
               >
                 {post !== "" && (
                   <button className="clear-button" onClick={handleClear}>
-                  Clear
-                </button>
+                    Clear
+                  </button>
                 )}
                 {!loading && (
                   <button type="submit" className="submit-button">
@@ -161,6 +186,21 @@ const Main = () => {
               ) : (
                 <p></p>
               )}
+            </div>
+            <div className="video-container">
+              <textarea
+                placeholder="Enter text to generate video..."
+                value={videoInput}
+                onChange={(e) => setVideoInput(e.target.value)}
+                className="video-input"
+              />
+              <button
+                onClick={handleVideoSubmit}
+                className="generate-video-button"
+              >
+                Generate Video
+              </button>
+              {videoSrc && <video src={videoSrc} controls />}
             </div>
           </div>
           <div className="content-description">
