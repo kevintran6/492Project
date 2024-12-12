@@ -138,8 +138,8 @@ const Main = () => {
               >
                 {post !== "" && (
                   <button className="clear-button" onClick={handleClear}>
-                  Clear
-                </button>
+                    Clear
+                  </button>
                 )}
                 {!loading && (
                   <button type="submit" className="submit-button">
@@ -166,12 +166,22 @@ const Main = () => {
           <div className="content-description">
             <p className="content-description-title">AITAH</p>
             <p className="content-description-text">
-              This is a webpage where you can explore the world of "Am I The
-              Asshole?" without the rules of real subreddits. Generate fake
+              Born from a late-night coding session between Kaden, Max, Tyler,
+              and Kevin, this webpage emerged as a playful response to Tyler's
+              endless Reddit rabbit holes. A chronic r/AmITheAsshole lurker,
+              Tyler would spend hours scrolling, seeking validation for every
+              minor life conflict. Ironically, after countless debates about
+              whether AI could truly capture human drama, he decided: if you
+              can't beat them, join them.
+              <br></br>
+              <br></br>
+              Now, this is a webpage where you can explore the world of "Am I
+              The Asshole?" without the rules of real subreddits. Generate fake
               interpersonal conflict scenarios, from mundane misunderstandings
               to wild hypothetical debates, using our AI model. Adjust the
               topic, judgement, temperature, top-k, and top-p to fine-tune the
-              content you want.
+              content you want - a project that started as a joke and became
+              Tyler's ultimate revenge on endless Reddit drama.
             </p>
           </div>
         </div>

@@ -9,6 +9,7 @@ import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfi
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import LiveHelpIcon from "@mui/icons-material/LiveHelp";
 import DeveloperBoardIcon from "@mui/icons-material/DeveloperBoard";
+import NiceGuys from "../assets/nice_guys.jpg";
 
 const Sidebar = ({
   isSidebarOpen,
@@ -26,11 +27,22 @@ const Sidebar = ({
   };
   return (
     <div className="sidebar">
-      <button className="sidebar-button">
+      <button
+        className="sidebar-button"
+        onClick={() => (window.location.href = "/")}
+      >
         <HomeIcon />
         Home
       </button>
-      <button className="sidebar-button">
+      <button
+        className="sidebar-button"
+        onClick={() =>
+          window.open(
+            "https://www.reddit.com/r/AmItheAsshole/comments/1hc8yg4/aita_for_stealing_my_roommates_food_because_there/",
+            "_blank"
+          )
+        }
+      >
         <ArrowCircleUpIcon />
         Popular
       </button>
@@ -53,13 +65,36 @@ const Sidebar = ({
       </button>
       {openAccordions.includes(0) && (
         <>
-          <button className="sidebar-button">
+          <button
+            className="sidebar-button"
+            onClick={() =>
+              window.open("https://www.reddit.com/r/AmItheAsshole/", "_blank")
+            }
+          >
             <img src={AITAH} alt="AITAH" className="sidebar-button-icon" />
             r/AITAH
           </button>
-          <button className="sidebar-button">
+          <button
+            className="sidebar-button"
+            onClick={() =>
+              window.open("https://www.reddit.com/r/AskReddit/", "_blank")
+            }
+          >
             <img src={AR} alt="AR" className="sidebar-button-icon" />
             r/AskReddit
+          </button>
+          <button
+            className="sidebar-button"
+            onClick={() =>
+              window.open("https://www.reddit.com/r/NiceGuys/", "_blank")
+            }
+          >
+            <img
+              src={NiceGuys}
+              alt="NiceGuys"
+              className="sidebar-button-icon"
+            />
+            r/NiceGuys
           </button>
         </>
       )}
@@ -123,10 +158,10 @@ const Sidebar = ({
             <SentimentVerySatisfiedIcon />
             About Rabbit
           </button>
-          <button className="sidebar-button">
+          {/* <button className="sidebar-button">
             <SportsEsportsIcon />
             Blog
-          </button>
+          </button> */}
           <button className="sidebar-button">
             <LiveHelpIcon />
             Help
